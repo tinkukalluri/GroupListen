@@ -3,5 +3,5 @@ from django.http import HttpResponse
 
 # Create your views here.
 
-def main(request):
-    return HttpResponse("<h1>tinku</h1>")
+def index(request, *args, **kwargs):
+    return render(request, 'frontend/index.html' , {})
