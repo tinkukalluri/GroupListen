@@ -20,15 +20,6 @@ export default class HomePage extends Component {
         this.clearRoomCode = this.clearRoomCode.bind(this);
     }
 
-    // async componentDidMount() {
-    //     fetch("/api/user-in-room")
-    //         .then((response) => response.json())
-    //         .then((data) => {
-    //             this.setState({
-    //                 roomCode: data.code,
-    //             });
-    //         });
-    // }
 
     renderHomePage() {
         return (
@@ -65,13 +56,7 @@ export default class HomePage extends Component {
                     <Route
                         exact
                         path="/"
-                        render={() => {
-                            return this.state.roomCode ? (
-                                <Redirect to={`/room/${this.state.roomCode}`} />
-                            ) : (
-                                this.renderHomePage()
-                            );
-                        }}
+                        component={this.renderHomePage}
                     />
                     <Route
                         path="/join"

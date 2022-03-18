@@ -11,25 +11,15 @@ export default class RoomJoinPage extends Component {
         this.state = {
             roomCode: "",
             error: "",
-            redirect: false
         };
+        this.get_user_in_room();
+        this.get_user_in_room = this.get_user_in_room.bind(this);
         this.handleTextFieldChange = this.handleTextFieldChange.bind(this);
         this.roomButtonPressed = this.roomButtonPressed.bind(this);
+        this.clearRoomCode = this.clearRoomCode.bind(this);
     }
 
-    setRedirect = () => {
-        this.setState({
-            redirect: true
-        })
-    }
-
-    renderRedirect = () => {
-        if (this.state.redirect) {
-            return (<Redirect to='create' />)
-        }
-    }
     render() {
-
         return (
             < Grid container spacing={1} >
                 <Grid item xs={12} align="center">
@@ -65,6 +55,32 @@ export default class RoomJoinPage extends Component {
             </Grid >
         );
     }
+
+    async get_user_in_room() {
+        fetch("/api/user-in-room")
+            .then((response) => {
+                if (response.ok) {
+                    return response.json()
+                } else {
+                    return { "error": "no user" }
+                }
+            }).then((data) => {
+                if (!data.error) {
+                    console.log("session response", data)
+                    this.setState({
+                        roomCode: data.code,
+                    })
+                    this.props.history.push(`/room/${this.state.roomCode}`);
+                }
+            });
+    }
+
+    clearRoomCode() {
+        this.setState({
+            roomCode: null,
+        });
+    }
+
 
     handleTextFieldChange(e) {
         this.setState({
