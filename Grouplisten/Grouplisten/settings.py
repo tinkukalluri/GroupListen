@@ -25,7 +25,10 @@ SECRET_KEY = 'django-insecure-_s2wxpq3objibg3-pol4^2_##3182en92dd@=i*!z84=j3tlkc
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+#here host means computers which can host the application
+ALLOWED_HOSTS = ['192.168.29.3', '127.0.0.1']
+
+STATIC_URL = 'frontend/static'
 
 
 # Application definition
@@ -40,6 +43,7 @@ INSTALLED_APPS = [
     'api.apps.ApiConfig',
     'rest_framework',
     'frontend',
+    'spotify'
 ]
 
 MIDDLEWARE = [

@@ -109,7 +109,7 @@ export default class RoomJoinPage extends Component {
                     this.props.history.push(`/room/${this.state.roomCode}`);
                     // useHistory().history.push(`/room/${this.state.roomCode}`)
                     // console.log(this.props.his)
-                    this.setRedirect()
+                    // this.setRedirect()
                 } else {
                     this.setState({ error: "Room not found." });
                 }
