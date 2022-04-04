@@ -73,13 +73,15 @@ export default class CreateRoomPage extends Component {
                 }
                 else {
                     this.state.helperText = "somethings wrong"
-                    console.log("something wne wrong")
-                    return { "nope": "something went wrong" }
+                    console.log("something went wrong in create-room api")
+                    return response.json();
                 }
             })
             .then((data) => {
                 console.log(data)
                 this.props.history.push(`/room/${data?.code}`)
+            }).catch((err) => {
+                console.log(err)
             })
     }
 
