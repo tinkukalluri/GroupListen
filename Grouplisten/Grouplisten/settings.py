@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-_s2wxpq3objibg3-pol4^2_##3182en92dd@=i*!z84=j3tlkc
 DEBUG = True
 
 #here host means computers which can host the application
-ALLOWED_HOSTS = ['192.168.29.3', '127.0.0.1']
+ALLOWED_HOSTS = ['192.168.29.3', '127.0.0.1' , "localhost"]
 
 STATIC_URL = 'frontend/static'
 
@@ -80,12 +80,27 @@ WSGI_APPLICATION = 'Grouplisten.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
+
+DATABASES = {  
+    'default': {  
+        'ENGINE': 'django.db.backends.mysql',  
+        'NAME': 'grouplisten',  
+        'USER': 'root',  
+        'PASSWORD': 'sintin1310',  
+        'HOST': 'localhost',  
+        'PORT': '3306',  
+        'OPTIONS': {  
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"  
+        }  
+    }  
+}  
 
 
 # Password validation

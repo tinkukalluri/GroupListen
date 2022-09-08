@@ -11,8 +11,8 @@ BASE_URL = "https://api.spotify.com/v1/me/"
 def get_user_tokens(session_id):
     user_tokens = SpotifyToken.objects.filter(user=session_id)
     print(user_tokens)
-    print("refresh_token::"+user_tokens[0].refresh_token)
     if user_tokens.exists():
+        print("refresh_token::"+user_tokens[0].refresh_token)
         return user_tokens[0]
     else:
         return None
@@ -20,6 +20,7 @@ def get_user_tokens(session_id):
 
 def update_or_create_user_tokens(session_id, access_token, token_type, expires_in, refresh_token):
     tokens = get_user_tokens(session_id)
+    print(expires_in)
     expires_in = timezone.now() + timedelta(seconds=expires_in)
 
     if tokens:

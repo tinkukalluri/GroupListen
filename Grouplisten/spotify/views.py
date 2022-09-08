@@ -46,7 +46,7 @@ def spotify_callback(request):
         'client_id': CLIENT_ID,
         'client_secret': CLIENT_SECRET
     }).json()
-
+    print("================================================================================",response)
     access_token = response.get('access_token')
     token_type = response.get('token_type')
     refresh_token = response.get('refresh_token')
@@ -59,13 +59,13 @@ def spotify_callback(request):
     update_or_create_user_tokens(
         request.session.session_key, access_token, token_type, expires_in, refresh_token)
 
-    return redirect('frontend:')
+    return redirect('frontend:/join')
 
 
 class IsAuthenticated(APIView):
     def get(self, request, format=None):
         is_authenticated = is_spotify_authenticated(self.request.session.session_key)
-        return Response({'status': is_authenticated}, status=status.HTTP_200_OK)
+        return Response({'status': is_authenticated if is_authenticated else False}, status=status.HTTP_200_OK)
 
 
 

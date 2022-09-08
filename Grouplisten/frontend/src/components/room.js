@@ -74,6 +74,7 @@ export default class Room extends Component {
 
                     }
                 }).then((data) => {
+                    console.log("auth-url: " + data.url)
                     console.log(window.location)
                     window.location.replace(data.url);
                 });
