@@ -50,7 +50,7 @@ export default class HomePage extends Component {
 
     render() {
         return (
-            <Router>
+            <Router className="IN_home_router">
                 <Switch>
                     <Route exact path="/info" component={Info} />
                     <Route
