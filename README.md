@@ -2,7 +2,7 @@
 
 # Note
 
-1 .The full application(grouplisten-v2) repository is kept private.
+1 .The full application(grouplisten-v2) repository is at https://github.com/tinkukalluri/GroupListen-V2.
 
 2. This repository is the first version of the application(grouplisten-v1) and is made public.
 
